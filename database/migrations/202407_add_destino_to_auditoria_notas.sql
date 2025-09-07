@@ -1,0 +1,1 @@
+ALTER TABLE auditoria_notas ADD COLUMN destino VARCHAR(100) NULL AFTER tipo; 

@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS empresas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cnpj VARCHAR(20) NOT NULL UNIQUE,
+    razao_social VARCHAR(255) NOT NULL,
+    uf VARCHAR(2),
+    cidade VARCHAR(100),
+    inscricao_estadual VARCHAR(30),
+    telefone VARCHAR(20),
+    email VARCHAR(100),
+    status VARCHAR(50),
+    regime VARCHAR(100),
+    representante_legal VARCHAR(255),
+    ativo TINYINT(1) DEFAULT 1,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 

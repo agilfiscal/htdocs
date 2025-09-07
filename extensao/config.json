@@ -1,0 +1,19 @@
+{
+  "name": "Ágil Fiscal - Consulta NF-e",
+  "version": "1.1",
+  "description": "Consulta automática de NF-e no portal da Sefaz",
+  "urls": {
+    "sefaz": "https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo",
+    "sefaz_cte": "https://www.cte.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo"
+  },
+  "selectors": {
+    "chave_input": "#ctl00_ContentPlaceHolder1_txtChaveAcessoResumo"
+  },
+  "window": {
+    "width": 1200,
+    "height": 900,
+    "type": "popup"
+  },
+  "debug": true,
+  "timeout": 1000
+} 

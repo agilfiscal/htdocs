@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste da Extensão Ágil Fiscal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn {
+            background: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #34495e;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste da Extensão Ágil Fiscal</h1>
+        
+        <div class="status info">
+            <strong>Instruções:</strong> Esta página simula a interface de auditoria para testar a extensão.
+        </div>
+
+        <div class="test-section">
+            <h3>📋 Tabela de Notas Fiscais (Simulada)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Seleção</th>
+                        <th>N° NFe</th>
+                        <th>CNPJ</th>
+                        <th>Razão Social</th>
+                        <th>Valor</th>
+                        <th>Chave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-nota='{"id": 1, "numero": "123456", "cnpj": "12.345.678/0001-90", "razao_social": "Empresa Teste Ltda", "valor": "1.000,00", "chave": "12345678901234567890123456789012345678901234"}'>
+                        <td><input type="radio" name="nota_selecionada" value="1"></td>
+                        <td>123456</td>
+                        <td>12.345.678/0001-90</td>
+                        <td>Empresa Teste Ltda</td>
+                        <td>R$ 1.000,00</td>
+                        <td>12345678901234567890123456789012345678901234</td>
+                    </tr>
+                    <tr data-nota='{"id": 2, "numero": "789012", "cnpj": "98.765.432/0001-10", "razao_social": "Outra Empresa S.A.", "valor": "2.500,00", "chave": "98765432109876543210987654321098765432109876"}'>
+                        <td><input type="radio" name="nota_selecionada" value="2"></td>
+                        <td>789012</td>
+                        <td>98.765.432/0001-10</td>
+                        <td>Outra Empresa S.A.</td>
+                        <td>R$ 2.500,00</td>
+                        <td>98765432109876543210987654321098765432109876</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 Botões de Ação</h3>
+            <button type="button" class="btn" id="btn-visualizar-danfe">
+                📄 Visualizar nota
+            </button>
+            <button type="button" class="btn" id="btn-testar-extensao">
+                🧪 Testar Extensão
+            </button>
+            <button type="button" class="btn" id="btn-limpar-status">
+                🗑️ Limpar Status
+            </button>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 Status da Extensão</h3>
+            <div id="status-container">
+                <div class="status info">
+                    Aguardando ação...
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>📝 Logs</h3>
+            <div id="logs" style="background: #f8f9fa; padding: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto; font-family: monospace; font-size: 12px;">
+                Logs aparecerão aqui...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para adicionar logs
+        function addLog(message, type = 'info') {
+            const logs = document.getElementById('logs');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.style.color = type === 'error' ? '#dc3545' : type === 'success' ? '#28a745' : '#6c757d';
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logs.appendChild(logEntry);
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        // Função para atualizar status
+        function updateStatus(message, type = 'info') {
+            const container = document.getElementById('status-container');
+            container.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        // Verificar se a extensão está disponível
+        function checkExtension() {
+            if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id) {
+                chrome.runtime.sendMessage({ tipo: "Ping" }, (response) => {
+                    if (chrome.runtime.lastError) {
+                        addLog('Extensão não disponível: ' + chrome.runtime.lastError.message, 'error');
+                        updateStatus('Extensão não encontrada ou não instalada', 'error');
+                    } else {
+                        addLog('Extensão disponível e funcionando', 'success');
+                        updateStatus('Extensão funcionando corretamente', 'success');
+                    }
+                });
+            } else {
+                addLog('Chrome runtime não disponível', 'error');
+                updateStatus('Chrome runtime não disponível', 'error');
+            }
+        }
+
+        // Interceptar botão de visualizar nota (simulando o content script)
+        function setupButtonInterception() {
+            const btnVisualizar = document.getElementById('btn-visualizar-danfe');
+            
+            if (btnVisualizar) {
+                addLog('Botão de visualizar nota encontrado, interceptando...');
+                
+                btnVisualizar.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    addLog('Botão visualizar nota clicado');
+                    
+                    const notaSelecionada = document.querySelector('input[name="nota_selecionada"]:checked');
+                    if (!notaSelecionada) {
+                        updateStatus('Por favor, selecione uma nota fiscal primeiro.', 'error');
+                        addLog('Nenhuma nota selecionada', 'error');
+                        return;
+                    }
+                    
+                    const tr = notaSelecionada.closest('tr');
+                    const nota = JSON.parse(tr.getAttribute('data-nota'));
+                    const chave = (nota.chave || '').replace(/[^0-9]/g, '').trim();
+                    
+                    if (!chave || chave.length !== 44) {
+                        updateStatus('Chave de acesso da nota inválida ou não encontrada.', 'error');
+                        addLog('Chave inválida: ' + chave, 'error');
+                        return;
+                    }
+                    
+                    addLog('Chave da nota: ' + chave);
+                    updateStatus('Abrindo consulta via extensão...', 'info');
+                    
+                    // Tentar usar a extensão
+                    if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id) {
+                        try {
+                            chrome.runtime.sendMessage({
+                                tipo: "AbrirConsulta",
+                                chave: chave
+                            }, (response) => {
+                                if (chrome.runtime.lastError) {
+                                    addLog('Erro ao abrir consulta: ' + chrome.runtime.lastError.message, 'error');
+                                    updateStatus('Erro ao abrir consulta via extensão', 'error');
+                                } else {
+                                    addLog('Consulta aberta com sucesso via extensão', 'success');
+                                    updateStatus('Consulta aberta com sucesso!', 'success');
+                                }
+                            });
+                        } catch (error) {
+                            addLog('Erro inesperado: ' + error.message, 'error');
+                            updateStatus('Erro inesperado ao usar extensão', 'error');
+                        }
+                    } else {
+                        addLog('Extensão não disponível, simulando abertura...', 'info');
+                        updateStatus('Extensão não disponível - simulação', 'info');
+                        setTimeout(() => {
+                            updateStatus('Simulação: Consulta seria aberta para chave ' + chave, 'success');
+                        }, 1000);
+                    }
+                });
+                
+                addLog('Interceptação do botão concluída');
+            }
+        }
+
+        // Botão de testar extensão
+        document.getElementById('btn-testar-extensao').addEventListener('click', function() {
+            addLog('Testando extensão...');
+            checkExtension();
+        });
+
+        // Botão de limpar status
+        document.getElementById('btn-limpar-status').addEventListener('click', function() {
+            document.getElementById('logs').innerHTML = 'Logs limpos...';
+            updateStatus('Status limpo', 'info');
+        });
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            addLog('Página de teste carregada');
+            setupButtonInterception();
+            checkExtension();
+        });
+    </script>
+</body>
+</html> 

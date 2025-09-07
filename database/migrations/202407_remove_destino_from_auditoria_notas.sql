@@ -1,0 +1,1 @@
+ALTER TABLE auditoria_notas DROP COLUMN destino; 

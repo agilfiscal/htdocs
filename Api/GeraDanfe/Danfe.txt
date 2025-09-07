@@ -1,0 +1,133 @@
+// consulta-chave.js
+
+document.getElementById('nfeKey').addEventListener('input', function(e) {
+    const chaveValida = validarChave(e.target.value);
+    document.getElementById('buscarBtn').disabled = !chaveValida;
+    if(e.target.value !== window.chaveAtual) {
+        resetarInterface();
+        document.getElementById('buscarBtn').style.display = 'inline-block';
+        document.querySelector('.action-btns').style.display = 'none';
+    }
+});
+
+function resetarInterface() {
+    document.querySelector('.action-btns').style.display = 'none';
+    document.getElementById('baixarPdfBtn').style.display = 'none';
+    document.getElementById('visualizarBtn').style.display = 'inline-block';
+    document.getElementById('pdfContainer').classList.add('d-none');
+    document.getElementById('success').classList.add('d-none');
+    window.chaveAtual = '';
+}
+
+async function buscarNota() {
+    const chave = document.getElementById('nfeKey').value.trim();
+    if (!validarChave(chave)) return;
+    try {
+        toggleLoading(true);
+        await prepararDados(chave);
+        document.getElementById('buscarBtn').style.display = 'none';
+        document.querySelector('.action-btns').style.display = 'flex';
+        window.chaveAtual = chave;
+        mostrarSucesso('NF-e localizada com sucesso!');
+    } catch (erro) {
+        mostrarErro('Não foi possível localizar a NF-e. Verifique a chave e tente novamente.');
+    } finally {
+        toggleLoading(false);
+    }
+}
+
+async function visualizarPDF() {
+    try {
+        toggleLoading(true);
+        const pdfData = await obterDadosPDF(window.chaveAtual);
+        
+        // Abre o PDF em uma nova aba
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write(`
+            <html>
+                <head>
+                    <title>DANFE - ${window.chaveAtual}</title>
+                    <style>
+                        body, html {
+                            margin: 0;
+                            padding: 0;
+                            height: 100%;
+                            overflow: hidden;
+                        }
+                        iframe {
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="${pdfData}" type="application/pdf"></iframe>
+                </body>
+            </html>
+        `);
+        newWindow.document.close();
+        
+        document.getElementById('visualizarBtn').style.display = 'none';
+        document.getElementById('baixarPdfBtn').style.display = 'inline-block';
+    } catch (erro) {
+        mostrarErro(`Erro ao visualizar PDF: ${erro.message}`);
+    } finally {
+        toggleLoading(false);
+    }
+}
+
+async function obterDadosPDF(chave) {
+    const resposta = await fetch(`https://ws.meudanfe.com/api/v1/get/nfe/danfepdf/${chave}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: "empty"
+    });
+    if (!resposta.ok) throw new Error(`Erro ao gerar PDF: ${resposta.status}`);
+    let base64 = await resposta.text();
+    base64 = base64.replace(/^"|"$/g, '').trim();
+    if (!base64.startsWith('JVBERi')) throw new Error('Formato de PDF inválido');
+    return `data:application/pdf;base64,${base64}`;
+}
+
+function baixarPDF() {
+    const link = document.createElement('a');
+    link.href = document.getElementById('pdfViewer').src;
+    link.download = `DANFE-${window.chaveAtual}.pdf`;
+    link.click();
+}
+
+async function baixarXML() {
+    try {
+        toggleLoading(true);
+        const resposta = await fetch(`https://ws.meudanfe.com/api/v1/get/nfe/xml/${window.chaveAtual}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: "empty"
+        });
+        if (!resposta.ok) throw new Error(`Erro ao baixar XML: ${resposta.status}`);
+        const xml = await resposta.text();
+        const blob = new Blob([xml], { type: 'application/xml' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `NFE-${window.chaveAtual}.xml`;
+        link.click();
+        window.URL.revokeObjectURL(url);
+    } catch (erro) {
+        mostrarErro(`Erro ao baixar XML: ${erro.message}`);
+    } finally {
+        toggleLoading(false);
+    }
+}
+
+async function prepararDados(chave) {
+    const resposta = await fetch(`https://ws.meudanfe.com/api/v1/get/nfe/data/MEUDANFE/${chave}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: "empty"
+    });
+    if (!resposta.ok) {
+        throw new Error('Erro na comunicação com o servidor');
+    }
+} 

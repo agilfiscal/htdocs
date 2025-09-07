@@ -1,0 +1,5 @@
+Array
+(
+    [tipo_usuario] => 1
+    [usuario_id] => 3
+)

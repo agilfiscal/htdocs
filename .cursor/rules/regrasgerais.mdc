@@ -1,0 +1,42 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+MODO DE EXIBIÇÃO DAS EMPRESAS
+
+Sempre exiba as empresas nesse layou: 
+
+Empresa 1 - Matriz
+Empresa 2 - Filial
+Empresa 3 - Matriz
+Empresa 4
+Empresa 5
+Empresa 6 - Filial
+
+---------------------------------------------------------------
+
+AVISO DE NOTAS LIBERADAS
+
+Um icone ao lado do nome do usuário, com um número clicável.
+Essa notificação diz quantas notas foram atualizadas pelo cliente, qual o fornecedor, qual o númeoro da nota.
+Ao clicar no icone, abrir uma janelinha tipo muipaper com as informações acima
+
+---------------------------------------------------------------
+
+Ao atualizar a versão da aba release em configurações, atualize também a versão abaixo do nome de usuário
+
+---------------------------------------------------------------
+
+Regras para página de auditoria, dashboard e monitoramento
+
+Notas Totais = São todas as notas que existem na tabela AUDITORIA_NOTAS
+1° - Notas Canceladas = São todas as notas que têm a SITUAÇÃO CANCELADA, 
+2° - Notas Retornadas = São todas as notas que têm o TIPO ENTRADA, na tabela AUDITORIA_NOTAS
+3° - Notas Próprias = São todas as notas que estão na tabela AUDITORIA_NOTAS com o CNPJ relacionado ao ID da tabela EMPRESAS, independente se for do TIPO SAIDA ou ENTRADA.
+4° - Notas Anuladas = São todas as notas do TIPO SAIDA  da tabela AUDITORIA_NOTAS, que têm o mesmo valor e CNPJ das notas RETORNADAS
+5° - Notas de Transferencia = São as notas da tabela AUDITORIA_NOTAS, que têm as colunas TIPO_EMPRESA e EMPRESA_MATRIZ_ID como Matriz e Filial da tabela EMPRESAS.
+6° - Notas em Romaneio = São todas as notas que tem uma chave na tabela AUDITORIA_NOTAS e contem uma chave correspondente na tabela ROMANEIO
+7° - Notas Desconhecidas = São todas as notas que tem uma chave na tabela AUDITORIA_NOTAS e contem a chave correspondente na tabela DESCONHECIMENTO
+8° - Notas Lançadas = São as notas que têm um HASH da tabela AUDITORIA_NOTAS correspondente ao HASH da tabela NOTAS
+9° - Notas Pendentes = Todas as notas que NÃO SÃO CANCELADAS, RETORNADAS, PRÓPRIAS, ANULADAS, TRANSFERENCIA, ROMANEIO, DESCONHECIDAS E LANÇADAS

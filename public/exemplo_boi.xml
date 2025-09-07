@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+    <NFe>
+        <infNFe versao="4.00">
+            <ide>
+                <dhEmi>2025-08-10T02:37:00-03:00</dhEmi>
+            </ide>
+            <emit>
+                <xNome>KYC PROCESSADORA DE CARNES LTDA</xNome>
+                <CNPJ>12.345.678/0001-90</CNPJ>
+                <enderEmit>
+                    <xLgr>Rua das Carnes</xLgr>
+                    <nro>123</nro>
+                    <xBairro>Centro</xBairro>
+                    <xMun>Curitiba</xMun>
+                    <UF>PR</UF>
+                    <CEP>80000-000</CEP>
+                </enderEmit>
+            </emit>
+            <det>
+                <prod>
+                    <xProd>BOI CASADO - 1,00</xProd>
+                    <qCom>224.5000</qCom>
+                    <vUnTrib>20.9900000000</vUnTrib>
+                    <vProd>4712.26</vProd>
+                    <uTrib>KG</uTrib>
+                    <NCM>0201.30.00</NCM>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <CST>000</CST>
+                            <vBC>4712.26</vBC>
+                            <pICMS>18.00</pICMS>
+                            <vICMS>848.21</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>4712.26</vBC>
+                            <pPIS>1.65</pPIS>
+                            <vPIS>77.75</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>4712.26</vBC>
+                            <pCOFINS>7.60</pCOFINS>
+                            <vCOFINS>358.13</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vProd>4712.26</vProd>
+                    <vICMS>848.21</vICMS>
+                    <vPIS>77.75</vPIS>
+                    <vCOFINS>358.13</vCOFINS>
+                    <vNF>4712.26</vNF>
+                </ICMSTot>
+            </total>
+        </infNFe>
+    </NFe>
+</nfeProc>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+    <NFe>
+        <infNFe versao="4.00">
+            <ide>
+                <dhEmi>2025-08-10T02:37:00-03:00</dhEmi>
+            </ide>
+            <emit>
+                <xNome>KYC PROCESSADORA DE CARNES LTDA</xNome>
+                <CNPJ>12.345.678/0001-90</CNPJ>
+                <enderEmit>
+                    <xLgr>Rua das Carnes</xLgr>
+                    <nro>123</nro>
+                    <xBairro>Centro</xBairro>
+                    <xMun>Curitiba</xMun>
+                    <UF>PR</UF>
+                    <CEP>80000-000</CEP>
+                </enderEmit>
+            </emit>
+            
+            <!-- Primeiro Produto: BOI CASADO -->
+            <det>
+                <prod>
+                    <xProd>BOI CASADO - 1,00</xProd>
+                    <qCom>224.5000</qCom>
+                    <vUnTrib>20.9900000000</vUnTrib>
+                    <vProd>4712.26</vProd>
+                    <uTrib>KG</uTrib>
+                    <NCM>0201.30.00</NCM>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <CST>000</CST>
+                            <vBC>4712.26</vBC>
+                            <pICMS>18.00</pICMS>
+                            <vICMS>848.21</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                </imposto>
+            </det>
+            
+            <!-- Segundo Produto: BOI GORDO -->
+            <det>
+                <prod>
+                    <xProd>BOI GORDO - 1,00</xProd>
+                    <qCom>312.8000</qCom>
+                    <vUnTrib>18.5000000000</vUnTrib>
+                    <vProd>5786.80</vProd>
+                    <uTrib>KG</uTrib>
+                    <NCM>0201.30.00</NCM>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <CST>000</CST>
+                            <vBC>5786.80</vBC>
+                            <pICMS>18.00</pICMS>
+                            <vICMS>1041.62</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                </imposto>
+            </det>
+            
+            <!-- Terceiro Produto: BOI MAGRO -->
+            <det>
+                <prod>
+                    <xProd>BOI MAGRO - 1,00</xProd>
+                    <qCom>198.2000</qCom>
+                    <vUnTrib>22.7500000000</vUnTrib>
+                    <vProd>4508.05</vProd>
+                    <uTrib>KG</uTrib>
+                    <NCM>0201.30.00</NCM>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <CST>000</CST>
+                            <vBC>4508.05</vBC>
+                            <pICMS>18.00</pICMS>
+                            <vICMS>811.45</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                </imposto>
+            </det>
+            
+            <total>
+                <ICMSTot>
+                    <vProd>15007.11</vProd>
+                    <vICMS>2701.28</vICMS>
+                    <vNF>15007.11</vNF>
+                </ICMSTot>
+            </total>
+        </infNFe>
+    </NFe>
+</nfeProc>

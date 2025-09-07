@@ -1,0 +1,227 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [razao_social] => AGIL FISCAL SOLUCOES TRIBUTARIAS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [1] => Array
+        (
+            [id] => 15
+            [razao_social] => CASA QUEIJO LTDA
+            [tipo_empresa] => independente
+        )
+
+    [2] => Array
+        (
+            [id] => 32
+            [razao_social] => CASCATEL INDUSTRIA E COMERCIO DE TELHA LTDA
+            [tipo_empresa] => independente
+        )
+
+    [3] => Array
+        (
+            [id] => 31
+            [razao_social] => CON AMORE DELICATESSEN LTDA
+            [tipo_empresa] => independente
+        )
+
+    [4] => Array
+        (
+            [id] => 8
+            [razao_social] => DELICIAS & MERCATO LTDA - PERNAMBUES
+            [tipo_empresa] => matriz
+        )
+
+    [5] => Array
+        (
+            [id] => 22
+            [razao_social] => DELICIAS KM COMERCIAL DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [6] => Array
+        (
+            [id] => 19
+            [razao_social] => DELLYPORTO COMERCIAL DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [7] => Array
+        (
+            [id] => 21
+            [razao_social] => EMPORIO GARCIA - L. DO CONI COMERCIAL DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [8] => Array
+        (
+            [id] => 11
+            [razao_social] => FRUTO BOM HORT LTDA - FILIAL
+            [tipo_empresa] => filial
+        )
+
+    [9] => Array
+        (
+            [id] => 10
+            [razao_social] => FRUTO BOM HORT LTDA - MATRIZ
+            [tipo_empresa] => matriz
+        )
+
+    [10] => Array
+        (
+            [id] => 16
+            [razao_social] => GRAN DELI DELICATESSEN LTDA - BURAQUINHO
+            [tipo_empresa] => matriz
+        )
+
+    [11] => Array
+        (
+            [id] => 17
+            [razao_social] => GRAN DELI DELICATESSEN LTDA - PARALELA
+            [tipo_empresa] => filial
+        )
+
+    [12] => Array
+        (
+            [id] => 14
+            [razao_social] => GRAN REALIZACOES LTDA
+            [tipo_empresa] => independente
+        )
+
+    [13] => Array
+        (
+            [id] => 25
+            [razao_social] => GRAND SABOR DELICATESSEN COMERCIAL DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [14] => Array
+        (
+            [id] => 28
+            [razao_social] => HIPER MAIS - J M P COMERCIAL DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [15] => Array
+        (
+            [id] => 27
+            [razao_social] => JJ VAREJAO LTDA
+            [tipo_empresa] => independente
+        )
+
+    [16] => Array
+        (
+            [id] => 12
+            [razao_social] => JLD COMERCIO LTDA
+            [tipo_empresa] => independente
+        )
+
+    [17] => Array
+        (
+            [id] => 9
+            [razao_social] => MERCAP SOLUCOES DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [18] => Array
+        (
+            [id] => 23
+            [razao_social] => NOSSO AMIGO LTDA
+            [tipo_empresa] => independente
+        )
+
+    [19] => Array
+        (
+            [id] => 20
+            [razao_social] => ONDINA DELICATESSEN - R.S.S. COMERCIAL DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [20] => Array
+        (
+            [id] => 4
+            [razao_social] => ORGANI BARRA DISTRIBUIDORA DE ALIMENTOS LTDA
+            [tipo_empresa] => filial
+        )
+
+    [21] => Array
+        (
+            [id] => 5
+            [razao_social] => ORGANI SHOPPING - SÃO CRIST DISTRIBUIDORA DE ALIMENTOS LTDA
+            [tipo_empresa] => filial
+        )
+
+    [22] => Array
+        (
+            [id] => 6
+            [razao_social] => ORGANI STELLA MARES DISTRIBUIDORA DE ALIMENTOS LTDA
+            [tipo_empresa] => filial
+        )
+
+    [23] => Array
+        (
+            [id] => 3
+            [razao_social] => ORGANI VILAS DISTRIBUIDORA DE ALIMENTOS LTDA
+            [tipo_empresa] => matriz
+        )
+
+    [24] => Array
+        (
+            [id] => 33
+            [razao_social] => PANATA DELICATESSEN LTDA
+            [tipo_empresa] => independente
+        )
+
+    [25] => Array
+        (
+            [id] => 13
+            [razao_social] => PDV - PONTO DE VENDA ALIMENTOS COMERCIO LTDA
+            [tipo_empresa] => independente
+        )
+
+    [26] => Array
+        (
+            [id] => 2
+            [razao_social] => RIO VERDE - RM MERCADO E PANIFICADORA LTDA
+            [tipo_empresa] => independente
+        )
+
+    [27] => Array
+        (
+            [id] => 30
+            [razao_social] => SAVITREE SERVICOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [28] => Array
+        (
+            [id] => 26
+            [razao_social] => STELLA MARES COMERCIO DE ALIMENTOS LTDA
+            [tipo_empresa] => independente
+        )
+
+    [29] => Array
+        (
+            [id] => 24
+            [razao_social] => TODA HORA - CATARINA LTDA
+            [tipo_empresa] => independente
+        )
+
+    [30] => Array
+        (
+            [id] => 7
+            [razao_social] => TOTAL ATACADO - TJG - COMERCIAL DE ALIMENTOS TJG LTDA
+            [tipo_empresa] => independente
+        )
+
+    [31] => Array
+        (
+            [id] => 18
+            [razao_social] => VICTORINE DELICATESSEN
+            [tipo_empresa] => independente
+        )
+
+)

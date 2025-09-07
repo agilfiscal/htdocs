@@ -1,0 +1,61 @@
+(requisição da xml)
+
+$xmlDados = <<<XML
+<distDFeInt xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.01">
+    <tpAmb>{$tpAmb}</tpAmb>
+    <cUFAutor>{$uf}</cUFAutor>
+    <CNPJ>{$cnpj}</CNPJ>
+    <distNSU>
+        <ultNSU>{$ultNSU}</ultNSU>
+    </distNSU>
+</distDFeInt>
+XML;
+
+
+
+(soap client)
+
+$context = stream_context_create([
+    'ssl' => [
+        'local_cert' => $certPfx,
+        'passphrase' => $certPass,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ]
+]);
+
+$options = [
+    'stream_context' => $context,
+    'soap_version'   => SOAP_1_2,
+    'trace'          => true,
+    'exceptions'     => true,
+    'cache_wsdl'     => WSDL_CACHE_NONE
+];
+
+$client = new SoapClient($wsdlUrl, $options);
+
+// Cabeçalho SOAP
+$headerBody = [
+    'cUF'         => $uf,
+    'versaoDados' => '1.01'
+];
+
+$header = new SoapHeader(
+    'http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe',
+    'nfeCabecMsg',
+    $headerBody,
+    false
+);
+
+$client->__setSoapHeaders([$header]);
+
+try {
+    $result = $client->nfeDistDFeInteresse([
+        'nfeDadosMsg' => new SoapVar($xmlDados, XSD_ANYXML)
+    ]);
+
+    echo "Resposta da SEFAZ:<br>";
+    echo htmlentities($result->nfeDistDFeInteresseResult->any);
+} catch (SoapFault $e) {
+    echo "Erro: " . $e->getMessage();
+}

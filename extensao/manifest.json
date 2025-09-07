@@ -1,0 +1,49 @@
+{
+    "manifest_version": 3,
+    "name": "Ágil Fiscal - Consulta NF-e",
+    "version": "1.1",
+    "description": "Consulta automática de NF-e no portal da Sefaz. Integração com sistema Ágil Fiscal.",
+        "permissions": [
+        "scripting",
+        "tabs",
+        "storage",
+        "activeTab",
+        "webRequest"
+    ],
+    "host_permissions": [
+      "https://www.nfe.fazenda.gov.br/*",
+      "https://www.cte.fazenda.gov.br/*",
+      "http://localhost/*",
+      "https://localhost/*"
+    ],
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "Consultar NF-e no Portal SEFAZ",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx*"],
+        "js": ["captcha-monitor.js", "force-click.js", "injector.js"],
+        "run_at": "document_idle"
+      },
+      {
+        "matches": ["*://*/auditoria*", "*://localhost/auditoria*"],
+        "js": ["content-script.js"],
+        "run_at": "document_idle"
+      }
+    ]
+}
+  

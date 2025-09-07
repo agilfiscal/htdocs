@@ -1,0 +1,292 @@
+/* Auth Background CSS - Página de login com background de imagem */
+
+/* Reset e base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('/assets/images/Background.png') center/cover no-repeat fixed;
+  position: relative;
+}
+
+/* Overlay para melhorar legibilidade */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+  z-index: 1;
+}
+
+/* Container principal */
+.container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Card principal */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.6s ease-out;
+  max-width: 450px;
+  width: 100%;
+  overflow: hidden; /* Previne conteúdo de sair */
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo - CORRIGIDO */
+.text-center {
+  position: relative;
+  overflow: hidden; /* Previne overflow */
+  padding: 1rem;
+}
+
+.text-center img {
+  max-width: 100%; /* Usa 100% da largura disponível */
+  max-height: 150px; /* Altura máxima reduzida */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+  object-fit: contain; /* Mantém proporção */
+}
+
+.text-center img:hover {
+  transform: scale(1.02); /* Reduzido de 1.05 para 1.02 */
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+/* Tabs modernizadas */
+.nav-tabs {
+  border-bottom: 2px solid #e5e7eb;
+  background: #f8fafb;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.nav-tabs .nav-link {
+  color: #6b7280 !important;
+  background: transparent !important;
+  border: none !important;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  margin-right: 0.125rem;
+  transition: all 0.2s ease;
+  padding: 0.75rem 1rem;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #374151 !important;
+  background: rgba(37, 99, 235, 0.1) !important;
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff !important;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+/* Formulários */
+.form-control {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: #ffffff;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Botões modernos */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+/* Animações de transição */
+.tab-pane {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .card {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .text-center img {
+    max-height: 120px; /* Altura menor em mobile */
+  }
+  
+  .nav-tabs .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .form-control {
+    padding: 0.625rem 0.875rem;
+  }
+  
+  .btn {
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .text-center img {
+    max-height: 100px; /* Altura ainda menor */
+  }
+}
+
+/* Efeitos de hover - CORRIGIDO */
+.card:hover {
+  transform: translateY(-1px); /* Reduzido de -2px para -1px */
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Melhorias de acessibilidade */
+.form-control:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: rgba(31, 41, 55, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .form-control {
+    background: rgba(55, 65, 81, 0.9);
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .form-control:focus {
+    background: #374151;
+  }
+  
+  .form-label {
+    color: #d1d5db;
+  }
+  
+  .nav-tabs {
+    background: #374151;
+    border-color: #4b5563;
+  }
+  
+  .nav-tabs .nav-link {
+    color: #d1d5db !important;
+  }
+  
+  .nav-tabs .nav-link:hover {
+    color: #f9fafb !important;
+  }
+}
